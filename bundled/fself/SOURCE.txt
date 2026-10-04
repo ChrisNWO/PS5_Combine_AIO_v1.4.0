@@ -1,0 +1,10 @@
+fself-cli (PS5 Combine AIO) = fself_cli.py + make_fself.py
+
+make_fself.py and its license come from ps5-make-fself-recursive by Alex Free (BSD-3-Clause, see LICENSE-ps5mfr.md):
+  https://github.com/alex-free/ps5-make-fself-recursive
+which runs make_fself.py from the PS5 Payload SDK (John Tornblom):
+  https://github.com/ps5-payload-dev/sdk/blob/master/samples/install_app/make_fself.py
+make_fself.py is included unmodified. fself_cli.py is the PS5 Combine AIO wrapper (GPL-3.0 with the rest of the project):
+it re-implements the recursive logic of the ps5mfr shell script in Python (atomic writes, copy mode, progress for the GUI).
+
+fself-cli.exe is built by scripts\build-tools.ps1 with PyInstaller (no third-party Python packages are needed).

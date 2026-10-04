@@ -1,0 +1,5 @@
+ftpupload-cli is original code written for PS5 Combine AIO, using only the Python standard library
+(ftplib) - no third-party packages, no network-exploit or jailbreak-specific logic. It simply logs in
+to a plain/anonymous FTP server (such as the one built into etaHEN, or any other homebrew FTP server
+on the console) and uploads one file, creating the destination folder if it does not already exist.
+Built by scripts\build-tools.ps1 with PyInstaller.

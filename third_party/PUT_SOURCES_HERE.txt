@@ -1,0 +1,39 @@
+Положите сюда распакованные папки (имя папки может иметь суффикс -main / -master) / Put the unpacked folders here
+==========================================================================================================
+
+ОБЯЗАТЕЛЬНО / REQUIRED
+  MkPFS-main\                    https://github.com/PSBrew/MkPFS            -> tools\mkpfs        (упаковка образов)
+  PSVIETHOA-FPKG-Builder-main\                                              -> tools\fpkg-cli, tools\sony-sdk  (сборка FPKG)
+
+РЕКОМЕНДУЕТСЯ / RECOMMENDED
+  PS5PKGTool-1.2.0\              (pearlxcore, GPL-3.0)                      -> tools\ps5aio  (метаданные образов, трофеи, файлы,
+                                                                              ремонт/правка exFAT, сверка образов)
+                                                                              Без неё всё собирается, но эти функции недоступны.
+
+НЕОБЯЗАТЕЛЬНО / OPTIONAL
+  Auto-Backpork-main\            https://github.com/Nazky/Auto-Backpork     -> tools\backpork  (страница «Бэкпорт»:
+                                 нужны Backport.py и папка src\              режимы «авто» и «понижение SDK»)
+                                 У проекта НЕТ лицензии: собранный backpork-cli.exe не публикуйте без разрешения автора.
+
+УЖЕ ВНУТРИ ПРОЕКТА (класть не нужно) / ALREADY INSIDE THE PROJECT
+  bundled\ampr_emu\              эмулятор AMPR drakmor/ampr_emu (GPL-3.0), версии 0.3.6.6 и 0.4.2.1   -> tools\ampr_emu
+  bundled\fself\                 make_fself.py из ps5-make-fself-recursive (Alex Free, BSD-3) + fself_cli.py -> tools\fself
+
+НЕ НУЖНО ДЛЯ СБОРКИ / NOT NEEDED TO BUILD
+  ps5-app-dumper                 payload, который работает НА КОНСОЛИ (собирается PS5 Payload SDK) и снимает дамп на USB.
+                                 Это источник дампов для программы, а не её часть — берите готовую сборку у автора.
+  fakelib (libSce*.sprx)         файлы Sony: в проект не входят и не распространяются; для бэкпорта берутся со своей
+                                 консоли или из своих игр.
+
+Также нужны на ПК для сборки / Also needed on the PC to build
+  Qt 6.8.3 (llvm-mingw_64), CMake, Ninja, Python 3.9+ (3.14 проверен), .NET 10 SDK.
+  Команда / Command:  build.bat -QtDir C:\Qt\6.8.3\llvm-mingw_64
+
+НЕОБЯЗАТЕЛЬНО (ещё один вариант) / OPTIONAL (another option)
+  fpkg279\                      -> tools\fpkg279  (второй, более богатый движок сборки FPKG: AC-пакеты,
+                                  патч + .remastered.pkg, языки PlayGo, SDK 2.79 plaintext).
+                                  Содержит свои бинарники Sony Publishing Tools — отдельно от sony-sdk.
+                                  Нужны build-from-folder.ps1 и папка toolchain\ с prospero-pub-cmd.exe.
+
+УЖЕ ВНУТРИ ПРОЕКТА (ещё одно) / ALSO ALREADY INSIDE THE PROJECT
+  bundled\ftpupload\            автозагрузка готового файла на PS5 по FTP (свой код, только stdlib Python) -> tools\ftpupload

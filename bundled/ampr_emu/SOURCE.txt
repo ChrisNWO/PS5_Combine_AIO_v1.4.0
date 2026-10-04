@@ -1,0 +1,19 @@
+AMPR userland emulator (ampr_emu) by drakmor — GNU GPL-3.0
+License text: LICENSE-ampr_emu.txt
+Source code: https://github.com/drakmor/ampr_emu
+
+The libSceAmpr.sprx files here are the unmodified release builds, one folder per version.
+Pinned SHA-256 (the program refuses to copy a file whose hash differs):
+
+  0.3.6.6/libSceAmpr.sprx
+    362c84e31e3a06a42f50fe4d6ea124d15e73f77c901470f90823935d7f36ca76
+    https://github.com/drakmor/ampr_emu/tree/0.3.6.6
+
+  0.4.2.1/libSceAmpr.sprx
+    69e6c4d5e4f5fb83c9e01815db5861c4c75734acbf4595cafa50d4c218116d1a
+    https://github.com/drakmor/ampr_emu/tree/0.4.2.1
+
+PS5 Combine AIO copies a chosen build to <game folder>/fakelib/libSceAmpr.sprx before packing;
+MkPFS then generates ampr_emu.index for it. Different titles may need different builds.
+The hashes above were taken from the bundle that accompanies the PS5Craft project (axotk1k1/ps5craft);
+verify them against the upstream releases before redistributing.

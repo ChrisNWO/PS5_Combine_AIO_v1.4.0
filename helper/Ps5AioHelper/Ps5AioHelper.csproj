@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    ps5aio-helper: тонкая консольная обёртка над библиотеками PS5 PKG Tool (pearlxcore, GPL-3.0):
+    сканирование библиотеки, метаданные из образов/пакетов, трофеи, Activities/UDS, файлы внутри образов,
+    правка/ремонт exFAT, обновление AMPR, конвертация образов. Вывод — JSON-строки (stdout) для C++ GUI.
+    Исходники PS5 PKG Tool берутся из -p:Ps5PkgToolRoot=... (по умолчанию third_party\PS5PKGTool-1.2.0).
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>ps5aio-helper</AssemblyName>
+    <RootNamespace>Ps5AioHelper</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <Ps5PkgToolRoot Condition="'$(Ps5PkgToolRoot)' == ''">$(MSBuildThisFileDirectory)..\..\third_party\PS5PKGTool-1.2.0</Ps5PkgToolRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(Ps5PkgToolRoot)\PS5PKGTool.Core\PS5PKGTool.Core.csproj" />
+    <ProjectReference Include="$(Ps5PkgToolRoot)\PS5PKGTool.Ffpfsc\PS5PKGTool.Ffpfsc.csproj" />
+    <ProjectReference Include="$(Ps5PkgToolRoot)\PS5PKGTool.Ufs2\PS5PKGTool.Ufs2.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Oodle (Kraken) нужен движку при чтении пакетов; лежит рядом с exe и не упаковывается в single-file -->
+    <Content Include="$(Ps5PkgToolRoot)\PS5PKGTool\ThirdParty\Oodle\oo2core_9_win64.dll">
+      <Link>oo2core_9_win64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
+</Project>
